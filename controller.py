@@ -10,12 +10,11 @@ app = Flask(__name__)
 def index():
 	form = InputForm(request.form)
 	if request.method == 'POST' and form.validate():
-		r = form.r.data
-		s = compute(r)
+		result = compute(form.A.data, form.b.data, form.w.data, form.T.data)
 	else:
-		s = None
+		result = None
 
-	return render_template("view.html", form=form, s=s)
+	return render_template("view.html", form=form, result=result)
 
 if __name__ == "__main__":
 	app.run(debug=True)
