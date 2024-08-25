@@ -1,21 +1,37 @@
-<form method=post action="">
-<table>
-  {% for field in form %}
-    <tr>
-    <td>{{field.name}}</td><td>{{field(size=12)}}</td><td>{{field.label}}</td>
-    {% if field.errors %}
-      <td><ul class=errors>
-      {% for error in field.errors %}
-        <li><font color="red">{{error}}</font></li>
-      {% endfor %}</ul></td>
-    {% endif %}
-    </tr>
-  {% endfor %}
-</table>
-<p><input type=submit value=Compute></form></p>
+<!DOCTYPE html>
+<html lang="en">
 
-<p>
-{% if result != None %}
-<img src="{{result}}" width="500">
-{% endif %}
-</p>
+  <head>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+  </head>
+
+  <body>
+
+
+  <form method=post action="">
+  <table>
+    {% for field in form %}
+      <tr>
+      <td class="name">{{field.name}}</td>
+      <td>{{field(size=12)}}</td>
+      <td>{{field.label}}</td>
+      {% if field.errors %}
+        <td><ul class=errors>
+        {% for error in field.errors %}
+          <li><font color="red">{{error}}</font></li>
+        {% endfor %}</ul></td>
+      {% endif %}
+      </tr>
+    {% endfor %}
+  </table>
+  <p><input type=submit value=Compute></form></p>
+
+  <p>
+  {% if result != None %}
+  <img src="{{result}}" width="500">
+  {% endif %}
+  </p>
+
+  </body>
+
+</html>
