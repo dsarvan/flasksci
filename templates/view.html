@@ -18,6 +18,8 @@
   <p>This web page visualizes the function \( u(t) = Ae^{-bt}\sin(wt), \hbox{ for } t\in [0, T]\)</p>
 
   <form method=post action="">
+  <table> <!-- table with forms to the left and plot to the right -->
+  <tr><td>
   <table>
     {% for field in form %}
       <tr>
@@ -33,13 +35,18 @@
       </tr>
     {% endfor %}
   </table>
-  <p><input type=submit value=Compute></form></p>
+  </td>
 
+  <td>
   <p>
   {% if result != None %}
   <img src="{{result}}" width="500">
   {% endif %}
   </p>
+  </td></tr>
+  <tr><td><p><input type=submit value=Compute></p></td></tr>
+  </table>
+  </form>
 
   </body>
 
