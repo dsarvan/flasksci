@@ -15,11 +15,11 @@
 
   <body style="background: #ffffff;" onload="onPageLoad();">
 
+  <h3>Damped sinusoidal wave</h3>
+
   <p>This web page visualizes the function \( u(t) = Ae^{-bt}\sin(wt), \hbox{ for } t\in [0, T]\)</p>
 
   <form method=post action="">
-  <table> <!-- table with forms to the left and plot to the right -->
-  <tr><td>
   <table>
     {% for field in form %}
       <tr>
@@ -35,18 +35,14 @@
       </tr>
     {% endfor %}
   </table>
-  </td>
+  <p><input type="submit" value="Compute"></p>
+  </form>
 
-  <td>
   <p>
   {% if result != None %}
-  <img src="{{result}}" width="500">
+  <img src="{{result}}" width="700">
   {% endif %}
-  </p>
-  </td></tr>
-  <tr><td><p><input type=submit value=Compute></p></td></tr>
-  </table>
-  </form>
+  <p>
 
   </body>
 
