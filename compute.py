@@ -25,7 +25,7 @@ def compute(A, b, w, T, resolution=500):
 	ax.plot(t, u, "r", lw=1)
 	ax.grid(True, which="both")
 	ax.set(xlabel="$t$", ylabel="$u(t)$")
-	ax.set_title(f'A = {A}, b = {b}, w = {w}')
+	ax.set_title(f"$A = {A}\,m, b = {b}\,kg{{\cdot}}s^{{-1}}, w = {w:.2f}\,s^{{-1}}$")
 	if not os.path.isdir('static'):
 		os.mkdir('static')
 	else:
