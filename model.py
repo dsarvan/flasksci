@@ -17,7 +17,7 @@ def check_T(form, field):
 class InputForm(Form):
 	A = FloatField(
 		label='amplitude (m)', default=1.0,
-		validators=[validators.InputRequired()])
+		validators=[validators.InputRequired(), validators.NumberRange(0, 1E+20)])
 
 	b = FloatField(
 		label='damping factor (kg/s)', default=0,
