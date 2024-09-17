@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import sys
+import argparse
 from flask import Flask, render_template, request
 from model import InputForm
 
@@ -15,18 +15,22 @@ def index():
     else:
         result = None
 
-    return render_template(template, form=form, result=result)
+    return render_template(TEMPLATE, form=form, result=result)
 
 
 if __name__ == "__main__":
-    svg = True if sys.argv == "svg" else False
 
-    if svg:
-        from compute import compute_svg as compute
-        template = "view_svg.html"
+    parser = argparse.ArgumentParser(description="Damped sinusoidal wave")
+    parser.add_argument("--fmt", choices=["png", "svg"], default="png", help="Image file format")
 
-    else:
+    args = parser.parse_args()
+
+    if args.fmt == "png":
         from compute import compute_png as compute
-        template = "view_png.html"
+        TEMPLATE = "view_png.html"
+
+    if args.fmt == "svg":
+        from compute import compute_svg as compute
+        TEMPLATE = "view_svg.html"
 
     app.run(debug=True)
